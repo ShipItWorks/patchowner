@@ -5,5 +5,6 @@ Public record of changes to patchowner, written from the product page on shipitw
 ## 2026-11-07 (release v0.1.0, no new commits on the default branch since)
 
 - No changes merged to the default branch this round. Release tag v0.1.0 exists on the default branch.
+- 2026-11-07: Corrected the one-line description. It said "Only verified, relevant, actionable ... notices"; no measure of relevance exists and the run covers a sample inventory only. The line now says what ran and the stage.
 
 Score 83 / 100 on our own rubric, scored 2026-11-01; no score or proof label changed in this update. Product page: https://shipitworks.com/patchowner/
