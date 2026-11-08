@@ -2,7 +2,7 @@
 
 Only verified, relevant, actionable vulnerability notices, routed to the person who can act.
 
-**Score: 83 / 100** on the [ShipItWorks rubric](https://shipitworks.com/how-we-score/). Stage: Beta. As of 2026-11-02, from the [product page](https://shipitworks.com/patchowner/).
+**Score: 83 / 100** on our own [rubric](https://shipitworks.com/how-we-score/). Stage: Beta. Scored 2026-11-01; this record was updated 2026-11-07 from the [product page](https://shipitworks.com/patchowner/).
 
 Every number on the product page names the file it came from. The lists below are copied from that page, not rewritten.
 
@@ -22,10 +22,14 @@ Every number on the product page names the file it came from. The lists below ar
 - No release tag at all: git tag is empty at HEAD 1e523ef, so no version has ever been tagged
 - No PyPI release and no installer; running it needs uv
 - No CLI tests (cli.py is not exercised directly)
-- Browser button clicks, the localStorage fallback and the in-page policy edit have no JS tests and were never run in a browser
+- Browser button clicks, the localStorage fallback and the in-page policy edit have no JS tests and were not run in a browser
 - Live site content freshness versus the template was not checked
 - README's 'eleven checks' count does not match health.py (~12 Check( sites)
 - certifi PYSEC-2026-4320 unpatched (dev-only, via httpx); a11y gaps: no focus styles, no reduced-motion, tabs lack role=tab
+
+## What changed
+
+Nothing merged to the default branch of the private source repository in the 2026-11-07 close-out. See [CHANGELOG](CHANGELOG.md).
 
 ## Demo
 
@@ -35,7 +39,7 @@ The demo voice is AI-generated (ElevenLabs, "Alice") and the demo shows made-up 
 
 ## Source code
 
-The source is private for now. This repository holds the public record for the product: this README, and soon a CHANGELOG and LICENSE. Until the source is public, the [product page](https://shipitworks.com/patchowner/) is the source of truth, and the score above is the one to trust.
+The source is private for now. This repository holds the public record for the product: this README and a CHANGELOG, and soon a LICENSE. Until the source is public, the [product page](https://shipitworks.com/patchowner/) is the source of truth, and the score above is the one to trust.
 
 ## How we work
 
