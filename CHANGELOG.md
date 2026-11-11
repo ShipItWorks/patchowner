@@ -2,6 +2,12 @@
 
 Public record of changes to patchowner, written from the product page on shipitworks.com. The source is private. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Release tags exist on the private repository's default branch.
 
+## 2026-11-10 (release v0.4.0)
+
+- 2026-11-10: Land PR #120 merged into main as bc77d9e (16 lane PRs included); no feature label changed this round. Tagged v0.4.0 at bc77d9e.
+
+Score 84 / 100 on our own rubric, scored 2026-11-10. Product page: https://shipitworks.com/patchowner/
+
 ## 2026-11-08 (release v0.3.0)
 
 - 2026-11-08: Action-buttons proof log now states its exit code and was re-recorded at current main (PR #116; tag v0.3.0). Feature 6 is proven; 7 of 8 features proven. 84/100 on our own rubric. CI on main completed success on f82c327 and ab77bb6.
