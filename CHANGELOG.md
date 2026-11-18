@@ -2,6 +2,12 @@
 
 Public record of changes to patchowner, written from the product page on shipitworks.com. The source is private. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Release tags exist on the private repository's default branch.
 
+## 2026-11-18 (release v0.4.0)
+
+- 2026-11-18: A review at commit 167ffcd found EPSS input (from a file you supply; it reorders notices within one urgency level) and ticket and issue export built, with their tests passing, so both targets were removed from Where it's going. The same review ran pytest: 787 passed, 127 skipped. No feature label or score changed.
+
+Score 84 / 100 on our own rubric, scored 2026-11-12. Product page: https://shipitworks.com/patchowner/
+
 ## 2026-11-10 (release v0.4.0)
 
 - 2026-11-10: Land PR #120 merged into main as bc77d9e (16 lane PRs included); no feature label changed this round. Tagged v0.4.0 at bc77d9e.
