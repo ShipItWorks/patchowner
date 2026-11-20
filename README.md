@@ -1,10 +1,10 @@
 # patchowner
 
-Turns the CISA KEV catalog into vulnerability notices routed to the owner of an affected item. Built; seven of eight features proven on a sample inventory, one tested with sample data; relevance is not measured and it has not been tried on an organization's own inventory.
+Turns the CISA KEV catalog into vulnerability notices routed to the owner of an affected item. Built; 10 of 13 features proven, 9 items not done, shown with sample data; it has not been tried on an organization's own inventory.
 
-**Score: 84 / 100** on our own [rubric](https://shipitworks.com/how-we-score/). Stage: Beta. Scored 2026-11-12; this record was updated 2026-11-18 from the [product page](https://shipitworks.com/patchowner/).
+**Score: 87 / 100** on my own [rubric](https://shipitworks.com/how-we-score/). Stage: Release candidate. Scored 20 Nov 2026 at commit 44d7928, from the [product page](https://shipitworks.com/patchowner/). The lists below were copied from that page on 2026-11-18, before this scoring, and have not been refreshed; the product page is current.
 
-Every number on the product page names the file it came from. The lists below are copied from that page, not rewritten.
+Every number on the product page names the file it came from.
 
 **Platform.** Command line and web (Python; runs with uv). Live demo at patchowner.com.
 
@@ -13,7 +13,7 @@ Every number on the product page names the file it came from. The lists below ar
 - CLI replay of CISA KEV over inventory CSV -> HTML report (Proven)
 - Web upload demo (patchowner serve) (Proven)
 - SSVC deployer tree, default SEI policy, custom --policy CSV (Proven)
-- Matching tiers, suppression, budget, routing (Proven)
+- Matching tiers, budget, routing. Every match is sent. When the data raises a doubt, the notice still goes out, labelled "May not apply" with the reason. (Proven)
 - Health tab (README says ten to twelve checks) (Proven)
 - Action buttons persist state (serve mode JSON; static mode browser storage) (Proven)
 - Interactive policy edit recomputes cards in page (Tested with sample data)
@@ -45,7 +45,7 @@ See [CHANGELOG](CHANGELOG.md).
 
 ## Demo
 
-[Demo video (2:06) on the product page](https://shipitworks.com/patchowner/) · [Transcript](https://shipitworks.com/patchowner/transcript/)
+[Watch it work](https://shipitworks.com/patchowner/) on the product page · [Transcript](https://shipitworks.com/patchowner/transcript/)
 
 The demo voice is AI-generated (ElevenLabs, "Bella") and the demo shows made-up data. The video says so at the end.
 
@@ -53,9 +53,9 @@ The demo voice is AI-generated (ElevenLabs, "Bella") and the demo shows made-up 
 
 The source is private for now. This repository holds the public record for the product: this README and a CHANGELOG, and soon a LICENSE. Until the source is public, the [product page](https://shipitworks.com/patchowner/) is the source of truth, and the score above is the one to trust.
 
-## How we work
+## How I work
 
-Say only what we can back. Say what is not finished before anyone asks. Name people, companies and tools to give credit. Collect as little data as possible. We use AI and say so: Claude (by Anthropic) helps write the code and wrote this README.
+I say only what I can back. I say what is not finished before anyone asks. I name people, companies and tools to give credit. I collect as little data as possible. Built with Claude, by Anthropic: Claude helps write the code and wrote this README. Directed, tested and owned by Robert Sweetman in Stoughton, Massachusetts.
 
 Full version: [github.com/ShipItWorks](https://github.com/ShipItWorks) · Contact: support@shipitworks.com
 
