@@ -1,10 +1,10 @@
 # patchowner
 
-Turns the CISA KEV catalog into vulnerability notices routed to the owner of an affected item. Built; seven of eight features proven on a sample inventory, one tested with sample data; relevance is not measured and it has not been tried on an organization's own inventory.
+Turns the CISA KEV catalog into vulnerability notices routed to the owner of an affected item. Built; ten of thirteen features proven, three tested with sample data; relevance is not measured on real data and no organization has used it.
 
-**Score: 84 / 100** on our own [rubric](https://shipitworks.com/how-we-score/). Stage: Beta. Scored 2026-11-12; this record was updated 2026-11-18 from the [product page](https://shipitworks.com/patchowner/).
+**Score: 87 / 100** on my own [rubric](https://shipitworks.com/how-we-score/). Stage: Release candidate. Scored 20 Nov 2026 at commit 44d7928, from the [product page](https://shipitworks.com/patchowner/).
 
-Every number on the product page names the file it came from. The lists below are copied from that page, not rewritten.
+Every number on the product page names the file it came from.
 
 **Platform.** Command line and web (Python; runs with uv). Live demo at patchowner.com.
 
@@ -13,24 +13,28 @@ Every number on the product page names the file it came from. The lists below ar
 - CLI replay of CISA KEV over inventory CSV -> HTML report (Proven)
 - Web upload demo (patchowner serve) (Proven)
 - SSVC deployer tree, default SEI policy, custom --policy CSV (Proven)
-- Matching tiers, suppression, budget, routing (Proven)
+- Matching tiers, "may not apply" labels (every match sent), budget, routing (Proven)
 - Health tab (README says ten to twelve checks) (Proven)
 - Action buttons persist state (serve mode JSON; static mode browser storage) (Proven)
 - Interactive policy edit recomputes cards in page (Tested with sample data)
 - Live demo patchowner.com (Proven)
+- Ticket and issue export (replay --tickets, --issues; page Tickets and Issues buttons) (Proven)
+- EPSS file as an input to priority (replay --epss) (Proven)
+- One-page notice per owner (print or save as PDF) (Proven)
+- Version check against NVD (replay --nvd, off by default) (Tested with sample data)
+- patchowner watch: notices new since the last run, one .eml per owner (Tested with sample data)
 
 ## Not done yet
 
-- Feature 7 (in-page policy edit) is built, tested with sample data: its logs on main (proof/policy-edit.log, proof/policy-csv-roundtrip.log, both 2026-11-08, commit 855620e) ran the example inventory only, in one browser engine (Chromium), and were not re-run on the PR #120 merged tree
-- Proof logs for features 1 to 5 and 8 were recorded on 2026-11-08 at the pre-merge commit (base f1da22e plus proof files); code merged after them (PRs #96, #97 matching, #88, #93 Watch card) was not re-recorded. Feature 6 was re-recorded at ab77bb6 code (PR #116); no feature log was re-recorded on the PR #120 merged tree (land log, 2026-11-10)
-- patchowner.com served site/index.html as last changed by 2bf24a8 (#99, 2026-11-08) at its last recorded fetch (proof/live-demo.log, 2026-11-08T15:21:36Z); that page is not rebuilt from the merged template, so the PR #120 changes are not on it; site/privacy.html is on main but its deploy was not checked
-- On 2026-11-18 a review ran pytest at commit 167ffcd with the KEV catalog present: 787 passed, 127 skipped (the README's 97 passed, 4 skipped is dated 2026-10-30); CI on main completed success at bc77d9e (2026-11-10), f82c327 and ab77bb6, but what it ran was not read
-- No PyPI release and no installer; running it needs uv
-- CLI tests are thin: only the CSV encoding path calls cli.main directly (tests/test_cli_csv_encoding.py:27); proof logs cover the rest by hand
-- Browser runs are hand-recorded with Node and Playwright, not run in CI; Safari, a phone and a screen reader not run
-- Not tried on an organization's own inventory; one machine's package list was run once (proof/real-software-list.log), where 111 name hits were refused and named; relevance is not measured
-- pyproject.toml says 0.1.0 while the tag is v0.4.0; CHANGELOG.md has no 0.2.0, 0.3.0 or 0.4.0 section (changes sit under Unreleased)
-- certifi PYSEC-2026-4320 unpatched (dev-only, via httpx); a11y open: no skip link, contrast not verified, no screen reader run
+- Three features are tested with sample data only: the in-page policy edit (example inventory; the earlier card left a move to Proven to the owner), `replay --nvd` (on the example inventory 0 notices fell outside NVD's range, so that path was not reached on any data the scorer ran; the 48 labelled rows carry no versions) and `watch` (example inventory; a withdrawn entry, --baseline and --every were not run, and there is no proof/ log for it)
+- Colour contrast does not meet WCAG AA: 10 of 32 text pairs in the report are below 4.5:1, including every urgency tag in dark mode and the dark-mode eyebrow at 1.60:1; no skip link; no screen reader was run
+- Not used by any organization: the one real inventory run is San Francisco's published list (floor b1); relevance is measured only on 48 synthetic labelled rows that were used to write the name rules, and proof/real-software-list.log (2026-11-08) predates those rules
+- No PyPI release, no GitHub release and no installer; running it needs uv; the source repository is private
+- Docs drift at 44d7928: README still says "Only verified, relevant, actionable" and "97 passed, 4 skipped on 2026-10-30", its layout omits watch, SECURITY.md says nothing about the optional NVD call, and watch emails still say "PatchOwner"
+- Most proof/ logs (77 of 87) were recorded at 34e7d97, not at 44d7928; five change-records stay at older commits pending the owner (WO-09 items 14 and 16), and proof/python-egress-strace.log (2026-11-08) does not cover --nvd or watch
+- Browser runs use Playwright's engines and phone profiles: Safari itself, Edge, a real phone and a screen reader speaking were not run
+- No import into a real ticket or issue tool was run, and no one-page sheet was printed on paper or read by an owner
+- certifi PYSEC-2026-4320 unpatched in the dev dependencies (via httpx); the runtime set has no known advisory
 
 ## What changed
 
@@ -45,7 +49,7 @@ See [CHANGELOG](CHANGELOG.md).
 
 ## Demo
 
-[Demo video (2:06) on the product page](https://shipitworks.com/patchowner/) · [Transcript](https://shipitworks.com/patchowner/transcript/)
+[Watch it work](https://shipitworks.com/patchowner/) on the product page · [Transcript](https://shipitworks.com/patchowner/transcript/)
 
 The demo voice is AI-generated (ElevenLabs, "Bella") and the demo shows made-up data. The video says so at the end.
 
@@ -53,9 +57,9 @@ The demo voice is AI-generated (ElevenLabs, "Bella") and the demo shows made-up 
 
 The source is private for now. This repository holds the public record for the product: this README and a CHANGELOG, and soon a LICENSE. Until the source is public, the [product page](https://shipitworks.com/patchowner/) is the source of truth, and the score above is the one to trust.
 
-## How we work
+## How I work
 
-Say only what we can back. Say what is not finished before anyone asks. Name people, companies and tools to give credit. Collect as little data as possible. We use AI and say so: Claude (by Anthropic) helps write the code and wrote this README.
+I say only what I can back. I say what is not finished before anyone asks. I name people, companies and tools to give credit. I collect as little data as possible. Built with Claude, by Anthropic: Claude helps write the code and wrote this README. Directed, tested and owned by Robert Sweetman in Stoughton, Massachusetts.
 
 Full version: [github.com/ShipItWorks](https://github.com/ShipItWorks) · Contact: support@shipitworks.com
 
